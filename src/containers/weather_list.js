@@ -4,7 +4,15 @@ import { connect } from 'react-redux';
 // import {bindActionCreators} from 'redux';
 // import {fetchWeather} from '../actions/index';
 
-export default class WeatherList extends Component {
+class WeatherList extends Component {
+ renderWeather(cityData) {
+   return (
+     <tr >
+      <td>{cityData.city.name}</td>
+     </tr>
+   )
+ }
+
   render() {
     return (
       <table className="table table-hover">
@@ -24,8 +32,8 @@ export default class WeatherList extends Component {
   }
 }
 
-fucntion mapStateToProps({weather}) {
-  return {weather}; // {weather} === {weather: weather}
+function mapStateToProps(state){
+  return {weather: state.weather};
 }
 
-export defualt connect(mapStateToProps)(WeatherList);
+export default connect(mapStateToProps)(WeatherList);
